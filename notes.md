@@ -22,6 +22,8 @@ You can see the actual negotiation with `curl -v -s https://byu.edu > /dev/null`
 
 Enable https by getting a web certificate
 
+# HTML
+
 ## Topic 4: HTML structure elements
 
 The header contains a paragraph with a span, and a navigation containing multiple divisions of sub-content.
@@ -113,6 +115,8 @@ Crossorigin needed if the video is not from your site.
   <circle cx="150" cy="100" r="50" />
 </svg>`
 
+# CSS
+
 ## Topic 6: CSS Flexbox
 `flex` display layout is useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes
 
@@ -132,6 +136,8 @@ Bootstrap: Referencing the Bootstrap CSS files then add the HTML link elements t
 https://getbootstrap.com/docs/5.2/getting-started/introduction/
 
 Here's an [example](https://codepen.io/leesjensen/pen/JjZavjW?editors=1100) of using bootstrap components.
+
+# Javascript
 
 ## Topic 8: Javascript Arrays
 
