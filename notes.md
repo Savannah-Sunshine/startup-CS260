@@ -26,7 +26,7 @@ Enable https by getting a web certificate
 
 ## Topic 4: HTML structure elements
 
-The header contains a paragraph with a span, and a navigation containing multiple divisions of sub-content.
+The header contains a paragraph with a span, and a navigation containing multiple fdivisions of sub-content.
 
 The main contains multiple sections that contain either an unordered list (ul) or a table. Main also contains an aside for content that does not fit the content flow of the sections.
 
