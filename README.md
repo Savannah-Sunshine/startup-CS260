@@ -1,7 +1,7 @@
 # CS260 - My Startup Specification
 
 ## Elevator pitch
-Cookies have become a source of outrage and public outcry, and not the sweet kind. After laws enforcing websites to ask if they can record cookies on you, this begs the question what sort of data is being kept on me? This website will show possible data that websites can access by reading your cookies from popular websites, by using our own database to track information on you, and using your IP address to locate you.
+Cookies have recently become a source of outrage and public outcry, but unfortunately, it’s not about the sweet kind. Many websites ask if they can store cookies on your device, which raises the question: what kind of data is being collected about me? This website will demonstrate the potential data websites can access. This website will read your cookies from popular sites, use our own database to track information about you, and locate you through your IP address.
 
 ## Design
 ![Login](Login_Figma.png)
