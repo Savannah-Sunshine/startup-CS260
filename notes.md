@@ -24,8 +24,7 @@ Enable https by getting a web certificate
 
 # HTML
 
-## Topic 4: HTML structure elements
-https://www.w3schools.com/TAGS/default.asp
+## [Topic 4: HTML structure elements](https://www.w3schools.com/TAGS/default.asp)
 
 <html>	Defines an HTML document
 <head>	Contains metadata/information for the document
@@ -172,3 +171,55 @@ Here's an [example](https://codepen.io/leesjensen/pen/JjZavjW?editors=1100) of u
 
 ## Topic 9: DOM
 Document Object Model (DOM) is an object representation of the HTML elements that the browser uses to render the display. The browser also exposes the DOM to external code so that you can write programs that dynamically manipulate the HTML.
+
+## Midterm
+#title selects by element ID, while .grid selects by element class.
+
+The padding applies to spacing between the element and its border. The margin applies to spacing between the border and other adjacent elements.
+
+Default display value for most elements is block or inline (change to flex or grid if desired)
+
+p.header { color:green; } <- is a possible CSS thing
+
+
+# [Express](https://github.com/webprogramming260/.github/blob/main/profile/webServices/express/express.md)
+
+ Express revolves around creating and using HTTP routing and middleware functions. 
+
+ HTTP endpoints are implemented in Express by defining routes that call a function based upon an HTTP path. The Express app object supports all of the HTTP verbs as functions on the object. For example, if you want to have a route function that handles an HTTP GET request for the URL path /store/provo you would call the get method on the app.
+
+`app.get('/store/provo', (req, res, next) => {
+  res.send({name: 'provo'});
+});`
+
+- get function takes two parameters, a URL path matching pattern, and a callback function that is invoked when the pattern matches. The path matching parameter is used to match against the URL path of an incoming HTTP request.
+- callback function has three parameters that represent the HTTP request object (req), the HTTP response object (res), and the next routing function that Express expects to be called if this routing function wants another function to generate a response.
+
+
+routing functions are only called if the associated pattern matches. Middleware functions are always called for every HTTP request unless a preceding middleware function does not call next. A middleware function has the following pattern:
+`function middlewareName(req, res, next)`
+
+EX: Log out the URL of request
+`app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});`
+
+
+simple error handler for anything that might go wrong while processing HTTP requests you could add the following.
+
+`app.use(function (err, req, res, next) {
+  res.status(500).send({type: err.name, message: err.message});
+});`
+
+# [Fetch](https://github.com/webprogramming260/.github/blob/main/profile/webServices/fetch/fetch.md)
+ fetch takes a URL and returns a promise. 
+ the fetch API is the preferred way to make HTTP requests
+
+ ex: 
+ `fetch('https://quote.cs260.click')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+`
