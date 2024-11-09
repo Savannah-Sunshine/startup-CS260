@@ -4,6 +4,9 @@ node_modules
 .pnp.js
 
 # testing
+/old
+
+# testing
 /coverage
 
 # production

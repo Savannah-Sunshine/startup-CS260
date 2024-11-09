@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import { Login } from './login/login';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
@@ -14,42 +14,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header></Header>
-        {/* <header className='container-fluid'>
-          <nav className='navbar fixed-top navbar-dark'>
-            <div className='navbar-brand'>
-              Simon<sup>&reg;</sup>
-            </div>
-            <menu className='navbar-nav'>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to=''>
-                  Login
-                </NavLink>
-              </li>
-              {authState === AuthState.Authenticated && (
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to='play'>
-                    Play
-                  </NavLink>
-                </li>
-              )}
-              {authState === AuthState.Authenticated && (
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to='scores'>
-                    Scores
-                  </NavLink>
-                </li>
-              )}
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='about'>
-                  About
-                </NavLink>
-              </li>
-            </menu>
-          </nav>
-        </header> */}
 
-        {/* <Routes>
-          <Route
+        <Routes>
+          <Route path='/' element={<>hi</>} />
+          {/* <Route
             path='/'
             element={
               <Login
@@ -62,19 +30,10 @@ function App() {
               />
             }
             exact
-          />
-          <Route path='/details' element={<Details name={Name} />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes> */}
-
-        {/* <footer className='bg-dark text-dark text-muted'>
-          <div className='container-fluid'>
-            <span className='text-reset'>Author Name(s)</span>
-            <a className='text-reset' href='https://github.com/webprogramming260/simon-react'>
-              Source
-            </a>
-          </div>
-        </footer> */}
+          /> */}
+          <Route path='/details' element={<Details/>} />
+          <Route path='*' element={<NotFound />} /> 
+        </Routes>
         <Footer></Footer>
     </BrowserRouter>
   );
