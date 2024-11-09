@@ -1,22 +1,28 @@
 import React from 'react';
-import './login.css';
 
-export function Login() {
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
+
+
+export function Login({ name, authState, onAuthChange }) {
+    console.log('Login', name, authState.Unknown, authState.Authenticated, authState.Unauthenticated)
     return (
-        <main>
-            <h1>Login to DiscoverMe</h1>
-            <form method="get" action="details.html">
-                <div>
-                    <div>@</div>
-                    <input type="text" placeholder="Joe Smith" />
-                </div>
-                <div>
-                    <div>🔒</div>
-                    <input type="password" placeholder="password" />
-                </div>
-                <button type="submit">Login</button>
-                <button type="submit">Create Account</button>
-            </form>
-        </main>
+        <div> 
+        {/* If authState is known, display DiscoverMe */}
+        {/* {authState !== AuthState.Unknown && <h1>Join DiscoverMe</h1>} */}
+        {/* If authenticated */}
+        {authState === AuthState.Authenticated && (
+          <Authenticated name={name} onLogout={() => onAuthChange(name, AuthState.Unauthenticated)} />
+        )}
+        {authState === AuthState.Unauthenticated && (
+          <Unauthenticated
+            userName={name}
+            onLogin={(loginName) => {
+              onAuthChange(loginName, AuthState.Authenticated);
+            }}
+          />
+        )}
+      </div>
     )
 }

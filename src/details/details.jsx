@@ -1,7 +1,9 @@
 import React from 'react';
+import './details.css';
 
 export function Details(props) {
     return (
+        // Could display localstorage stuff
         <main>
             <div class="detailsDiv">
                 <h1>Welcome {props.name}</h1>
