@@ -30,6 +30,10 @@ Cookies have recently become a source of outrage and public outcry, but unfortun
 
 # Deliverables 
 ## HTML deliverable
+Created detail and login (index) HTML pages that contains everything that the user will be able to click or mess with.
+Added images to the project. Deployed on AWS.
+
+Changed some of the images used compared to the mockup I gave based on what SVGs I could get for free.
 
 ## CSS deliverable
 
