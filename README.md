@@ -36,6 +36,12 @@ Added images to the project. Deployed on AWS.
 Changed some of the images used compared to the mockup I gave based on what SVGs I could get for free.
 
 ## CSS deliverable
+Created CSS files for footer, header, and the two HTML pages. Details and Login (index) have custom CSS. Kept a lot of the original orange theming, and made sure everything looked good viewed even when the page got tiny. Learned and used PicoCSS for the fun of it, and so I wouldn't have to use @media sizes as well to help with colors.
+
+Changes compared to mockup
+- Changed to a dark asthetic
+- Changed appearance of login and sign up pages because my mockup was ugly and I didn't like them.
+- Removed google login because that was out of scope for this class.
 
 ## Javascript deliverable
 

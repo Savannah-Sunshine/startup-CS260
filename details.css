@@ -10,7 +10,7 @@ main h1 {
 
 /* Todo: change to detailsDiv in react */
 main div { 
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 main ul {
