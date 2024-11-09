@@ -1,50 +1,53 @@
 <!-- This is the login page -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- Tell browsers not to scale the viewport automatically -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DiscoverMe</title>
-    <link rel="icon" href="images/eye-white.svg" />
-    <meta name="color-scheme" content="light dark" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  </head>
-  <body>
-    <header>
-      <h3>DiscoverMe</h3>
-      <!-- Navigation elements -->
-      <nav>
-        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-        <menu>
-          <li><a href="index.html">Login</a></li>
-          <li><a href="details.html">Details</a></li>
-        </menu>
-      </nav>
-      <hr />
-    </header>
 
-    <main>
-      <h1>Login to DiscoverMe</h1>
-      <form method="get" action="details.html">
-        <div>
-          <span>@</span>
-          <input type="text" placeholder="your@email.com" />
-        </div>
-        <div>
-          <span>🔒</span>
-          <input type="password" placeholder="password" />
-        </div>
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
-      </form>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <!-- Tell browsers not to scale the viewport automatically -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscoverMe</title>
+  <link rel="icon" href="images/eye-white.svg" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="header.css" />
+</head>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Savannah Smith</span>
-      <br />
-      <a href="https://github.com/Savannah-Sunshine/startup-CS260">Savannah's GitHub</a>
-    </footer>
-  </body>
+<body>
+  <header>
+    <h3>DiscoverMe</h3>
+    <!-- Navigation elements -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Login</a></li>
+        <li><a href="details.html">Details</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Login to DiscoverMe</h1>
+    <form method="get" action="details.html">
+      <div>
+        <span>@</span>
+        <input type="text" placeholder="your@email.com" />
+      </div>
+      <div>
+        <span>🔒</span>
+        <input type="password" placeholder="password" />
+      </div>
+      <button type="submit">Login</button>
+      <button type="submit">Create</button>
+    </form>
+  </main>
+
+  <footer>
+    <hr />
+    <span class="text-reset">Savannah Smith</span>
+    <br />
+    <a href="https://github.com/Savannah-Sunshine/startup-CS260">Savannah's GitHub</a>
+  </footer>
+</body>
+
 </html>
