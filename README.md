@@ -4,9 +4,9 @@
 Cookies have recently become a source of outrage and public outcry, but unfortunately, it’s not about the sweet kind. Many websites ask if they can store cookies on your device, which raises the question: what kind of data is being collected about me? This website will demonstrate the potential data websites can access. This website will read your cookies from popular sites, use our own database to track information about you, and locate you through your IP address.
 
 ## Design
-![Login](Login_Figma.png)
-![Register](Register_Figma.png)
-![Details](Details_Figma.png)
+![Login](public/Login_Figma.png)
+![Register](public/Register_Figma.png)
+![Details](public/Details_Figma.png)
 [View Figma](https://www.figma.com/design/dDcDPbFcEek6dWbKmcUnAh/Untitled?node-id=2-479&t=r9M2pkdplgVOkDiT-1)
 
 ## Key Features
@@ -44,4 +44,4 @@ Cookies have recently become a source of outrage and public outcry, but unfortun
 ## WebSocket deliverable
 
 # My Notes
-[Notes file](notes.md)
+[Notes file](public/notes.md)
