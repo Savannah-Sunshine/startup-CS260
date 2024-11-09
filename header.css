@@ -1,0 +1,21 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    /* 20px top, 16px right, 40px bottom, 16px left */
+    padding: 20px 16px 40px 16px; 
+}
+
+nav ul {
+    display: flex;
+    align-items: left;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+}

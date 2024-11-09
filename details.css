@@ -1,0 +1,30 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+main h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.detailsDiv {
+    padding-bottom: 20px;
+}
+
+main ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+main li {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    vertical-align: middle;
+    gap: 16px;
+}
