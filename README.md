@@ -49,10 +49,11 @@ Created:
 - Login page is now separate from App
 - Creates jsx for login and details pages
 - Now is forced to authenticate before using the app
+- Removed/extrapilated a lot of duplicate code, and put it into header/footer components, or the main App.jsx
 
 Changes:
 - Can no longer use header to navigate, only log out. (Aka, can't go to details page when not logged in)
-- Removed out-of-scope information, such as analyzing user's cookies. Now will only make an API call and store user's info. As is the expectation for CS260 (I believe)
+- Removed out-of-scope functionality, such as analyzing user's cookies. Now will only make an API call and store user's info. As is the expectation for CS260 (I believe)
 - Slight CSS changes
 
 ## Service deliverable
