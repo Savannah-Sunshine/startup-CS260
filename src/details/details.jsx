@@ -27,7 +27,7 @@ export function Details(props) {
 
     return (
         <main>
-            <div class="detailsDiv">
+            <div className="detailsDiv">
                 <h1>Welcome {props.name}</h1>
                 <h1>This is what we have gathered about you.</h1>
                 <br/>

@@ -11,11 +11,14 @@ function App() {
   const currentAuthState = name ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
+  console.log('app authState', authState);
+
   return (
     <BrowserRouter>
-      <Header authState={authState} onLogout={() => {
+      <Header isAuthenticated={authState === AuthState.Authenticated} onLogout={() => {
         localStorage.removeItem('name');
         setAuthState(AuthState.Unauthenticated);
+        setName('');
       }
       } />
 

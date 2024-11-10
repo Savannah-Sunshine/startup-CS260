@@ -1,27 +1,24 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthState } from '../login/authState';
 import './header.css';
 
-export function Header(authState, logout) {
+
+// Props
+// isAuthenticated : boolean 
+// onLogout: function
+export function Header(props) { 
 
     return (
         <header>
             <h3>DiscoverMe</h3>
             <nav>
                 <ul>
-                    {/* Only appears if logged out */}
-                    {authState === AuthState.Authenticated && (
-                        <NavLink className='nav-link' to='' onClick={logout}>
+                    {/* Only appears if logged in */}
+                    {props.isAuthenticated && (
+                        <NavLink className='nav-link' to='' onClick={props.onLogout}>
                             Logout
                         </NavLink>
                     )}
-
-                    {/* Debug, goes to login */}
-                    <NavLink className='nav-link' to='' onClick={logout}>
-                        login pg
-                    </NavLink>
-
                 </ul>
             </nav>
         </header>
