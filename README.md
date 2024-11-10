@@ -43,16 +43,17 @@ Changes compared to mockup
 - Changed appearance of login and sign up pages because my mockup was ugly and I didn't like them.
 - Removed google login because that was out of scope for this class.
 
-## Javascript deliverable
+## React deliverable
 Created:
+- Header & footer components
+- Login page is now separate from App
+- Creates jsx for login and details pages
+- Now is forced to authenticate before using the app
 
 Changes:
-- Can no longer use header to navigate, only log out.
-- Removed out-of-scope information, such as analyzing user's cookies. Now only makes an API call and stores user's info.
-- 
-
-
-## React deliverable
+- Can no longer use header to navigate, only log out. (Aka, can't go to details page when not logged in)
+- Removed out-of-scope information, such as analyzing user's cookies. Now will only make an API call and store user's info. As is the expectation for CS260 (I believe)
+- Slight CSS changes
 
 ## Service deliverable
 
