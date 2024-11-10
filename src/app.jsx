@@ -13,7 +13,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header></Header>
+      <Header authState={authState} onLogout={() => {
+        localStorage.removeItem('name');
+        setAuthState(AuthState.Unauthenticated);
+      }
+      } />
 
       <Routes>
         {/* <Route path='/' element={<Login />} /> */}
@@ -21,7 +25,7 @@ function App() {
           path='/'
           element={
             <Login
-              userName={name}
+              name={name}
               authState={authState}
               onAuthChange={(name, authState) => {
                 setAuthState(authState);
@@ -32,8 +36,7 @@ function App() {
           exact
         />
         <Route path='/details' element={
-          <Details
-            name={name} />
+          <Details name={name}/>
         }
         />
         <Route path='*' element={<NotFound />} />

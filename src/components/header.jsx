@@ -1,54 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthState } from '../login/authState';
 import './header.css';
 
-export function Header() {
-    //     <menu className='navbar-nav'>
-    //       <li className='nav-item'>
-    //         <NavLink className='nav-link' to=''>
-    //           Login
-    //         </NavLink>
-    //       </li>
-    //       {authState === AuthState.Authenticated && (
-    //         <li className='nav-item'>
-    //           <NavLink className='nav-link' to='play'>
-    //             Play
-    //           </NavLink>
-    //         </li>
-    //       )}
-    //   {authState === AuthState.Authenticated && (
-    //     <li className='nav-item'>
-    //       <NavLink className='nav-link' to='scores'>
-    //         Scores
-    //       </NavLink>
-    //     </li>
-    //   )}
-    //       <li className='nav-item'>
-    // <NavLink className='nav-link' to='about'>
-    //   About
-    // </NavLink>
-    //       </li>
-    //     </menu>
+export function Header(authState, logout) {
 
     return (
         <header>
             <h3>DiscoverMe</h3>
             <nav>
                 <ul>
-                    <NavLink className='nav-link' to=''>
-                        Login
+                    {/* Only appears if logged out */}
+                    {authState === AuthState.Authenticated && (
+                        <NavLink className='nav-link' to='' onClick={logout}>
+                            Logout
+                        </NavLink>
+                    )}
+
+                    {/* Debug, goes to login */}
+                    <NavLink className='nav-link' to='' onClick={logout}>
+                        login pg
                     </NavLink>
 
-                    {/* {authState === AuthState.Authenticated && (
-                        <li className='nav-item'>
-                          <NavLink className='nav-link' to='scores'>
-                            Scores
-                          </NavLink>
-                        </li>
-                      )} */}
-                    <NavLink className='nav-link' to='details'>
-                        Details
-                    </NavLink>
                 </ul>
             </nav>
         </header>

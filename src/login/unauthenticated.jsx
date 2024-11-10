@@ -9,12 +9,12 @@ export function Unauthenticated(props) {
   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.setItem('userName', name);
+    localStorage.setItem('name', name);
     props.onLogin(name);
   }
 
   async function createUser() {
-    localStorage.setItem('userName', name);
+    localStorage.setItem('name', name);
     props.onLogin(name);
   }
 
@@ -24,7 +24,7 @@ export function Unauthenticated(props) {
         <h1>Login</h1>
         <div className='form'>
           <div className='inputs'>
-            {/* I know the @ sign doesn't make sense for name, but I like it */}
+            {/* I know the @ signdoesn't make sense for name, but I like it */}
             <div>@</div>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Joe Smith" />
           </div>

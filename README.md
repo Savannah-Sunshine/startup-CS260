@@ -44,6 +44,13 @@ Changes compared to mockup
 - Removed google login because that was out of scope for this class.
 
 ## Javascript deliverable
+Created:
+
+Changes:
+- Can no longer use header to navigate, only log out.
+- Removed out-of-scope information, such as analyzing user's cookies. Now only makes an API call and stores user's info.
+- 
+
 
 ## React deliverable
 

@@ -8,7 +8,6 @@ main h1 {
     justify-content: center;
 }
 
-/* Todo: change to detailsDiv in react */
 main div { 
     padding-bottom: 20px;
 }
@@ -23,12 +22,6 @@ main ul {
 }
 
 main li {
-    /* display: flex;
-    justify-content: center;
-    height: fit-content;
-    vertical-align: middle;
-    gap: 16px;
-    align-items: center; */
     display: flex;
     justify-content: center;
     gap: 16px; /* Space between image and text */
