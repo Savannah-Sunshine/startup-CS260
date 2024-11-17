@@ -7,8 +7,17 @@ export function Authenticated(props) {
   const navigate = useNavigate();
 
   function logout() {
-    localStorage.removeItem('name');
-    props.onLogout();
+    console.log('Logging out');
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('name');
+        props.onLogout();
+      });
   }
 
   return (

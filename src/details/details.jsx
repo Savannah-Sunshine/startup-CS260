@@ -8,15 +8,7 @@ export function Details(props) {
     const [timesLoggedIn, setTimesLoggedIn] = React.useState(0);
     const [location, setLocation] = React.useState('');
 
-    // This will be used to get data from the database (timesLoggedIn)
-    React.useEffect(() => {
-        const timesLoggedIn = localStorage.getItem('timesLoggedIn');
-        if (timesLoggedIn) {
-            setTimesLoggedIn(JSON.parse(timesLoggedIn));
-        }
-    }, []);
-
-    // This will be used to call API
+    // This will be used to get data from the API/DB (timesLoggedIn)
     React.useEffect(() => {
         // This will be an API call to get the location of the user
         // fetch('https://quote.cs260.click')
