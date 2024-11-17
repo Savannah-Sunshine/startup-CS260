@@ -3,28 +3,69 @@ import './details.css';
 import globeImg from './globe.svg';
 import browserImg from './browser.svg';
 
+const API_KEY = "53223ad299892d91f4522431b448d102"; // Replace with your actual IPStack API key
+const API_URL = `https://api.ipstack.com/check?access_key=${API_KEY}`;
+
 // Gets name from props
 export function Details(props) {
     const [timesLoggedIn, setTimesLoggedIn] = React.useState(0);
     const [location, setLocation] = React.useState('');
 
-    // This will be used to get data from the API/DB (timesLoggedIn)
+    // This will be used to get data from the API
     React.useEffect(() => {
-        // This will be an API call to get the location of the user
-        // fetch('https://quote.cs260.click')
-        //     .then((response) => response.json())
-        //     .then((jsonResponse) => {
-        //         console.log(jsonResponse);
-        // });
-        setLocation('Boston, MA');
+        const fetchLocation = async () => {
+            // Use IPStack API to get location
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+                // console.log(response);
+                setLocation('Unknown');
+            }
+            const data = await response.json();
+
+            // Extract city and region_code
+            const location = {
+                city: data.city,
+                region_code: data.region_code
+            };
+            console.log("Location:", location);
+            setLocation(`${location.city}, ${location.region_code}`);
+        };
+        fetchLocation();
     }, []);
+
+    // This will be used to get data from the DB
+    React.useEffect(() => {
+
+        fetch('/api/getUserLogins', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: props.name })
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(response.toString());
+                }
+                return response.text(); // Get the response as text
+            })
+            .then((text) => {
+                const data = JSON.parse(text)
+                // console.log("Times Logged In:", data);
+                setTimesLoggedIn(data.logins);
+            })
+            .catch((error) => {
+                // console.log("Error fetching times logged in. Using default value.");
+                // console.log(error);
+                setTimesLoggedIn(5);
+            });
+    }, []);
+
 
     return (
         <main>
             <div className="detailsDiv">
                 <h1>Welcome {props.name}</h1>
                 <h1>This is what we have gathered about you.</h1>
-                <br/>
+                <br />
             </div>
             <ul>
                 <li>
@@ -42,7 +83,7 @@ export function Details(props) {
                 </li>
 
 
-                
+
                 {/* Todo: Can add these back if I need more coding fun */}
                 {/* <li>
                     <img src="public/cookie.svg" width="50px"></img>

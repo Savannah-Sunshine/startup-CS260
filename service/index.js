@@ -28,6 +28,7 @@ apiRouter.post('/auth/create', async (req, res) => {
   } else {
     const user = { name: req.body.name, password: req.body.password, token: uuid.v4() };
     users[user.name] = user;
+    numLogins[user.name] = 1;
 
     res.send({ token: user.token });
   }
@@ -63,12 +64,14 @@ apiRouter.delete('/auth/logout', (req, res) => {
 });
 
 // GetUserLogins
-apiRouter.get('/getUserLogins', (_req, res) => {
+apiRouter.post('/getUserLogins', (req, res) => {
   console.log('Hit getUserLogins endpoint');
+  console.log(numLogins, req.body.name);
   if (Object.keys(numLogins).length === 0) {
-    res.send([]);
+    res.send({logins: 0});
+    return
   }
-  res.send(numLogins[req.body.name]);
+  res.send({logins: numLogins[req.body.name]});
 });
 
 // SubmitScore
