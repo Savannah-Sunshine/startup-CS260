@@ -1,6 +1,11 @@
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+require('dotenv').config()
+
+// Get key from .env
+const API_KEY = process.env.IPSTACK_ACCESS_KEY;
+const API_URL = `https://api.ipstack.com/check?access_key=${API_KEY}`;
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
@@ -74,11 +79,18 @@ apiRouter.post('/getUserLogins', (req, res) => {
   res.send({logins: numLogins[req.body.name]});
 });
 
-// SubmitScore
-// apiRouter.post('/score', (req, res) => {
-//   scores = updateScores(req.body, scores);
-//   res.send(scores);
-// });
+// GetAuth the location of the user
+apiRouter.get('/getLocation', async (req, res) => {
+  console.log("API KEY:", API_KEY);
+  console.log('Hit get location endpoint');
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    res.status(500).send({ msg: 'Error fetching location' });
+    return;
+  }
+  const data = await response.json();
+  res.send({ location: `${data.city}, ${data.region_name}` });
+});
 
 // Return the 404 error code for all other requests
 app.use((_req, res) => {
