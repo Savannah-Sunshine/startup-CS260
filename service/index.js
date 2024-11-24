@@ -42,6 +42,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const user = await DB.createUser(req.body.name, req.body.password);
+    await DB.addLogin({name: req.body.name})
 
     // Set the cookie
     setAuthCookie(res, user.token);
@@ -113,15 +114,14 @@ secureApiRouter.post('/getUserLogins', async (req, res) => {
 // This API call is in backend because it requires the API key to be kept secret - frontend doesn't allow .env
 secureApiRouter.get('/getLocation', async (req, res) => {
   console.log('Hit get location endpoint');
-  // const response = await fetch(API_URL);
-  // if (!response.ok) {
-  //   // Lets front page deal with error handling
-  //   res.status(500).send({ msg: 'Error fetching location' });
-  //   return;
-  // }
-  // const data = await response.json();
-  // res.send({ location: `${data.city}, ${data.region_name}` });
-  res.send({ location: `Canada, TODO` });
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    // Lets front page deal with error handling
+    res.status(500).send({ msg: 'Error fetching location' });
+    return;
+  }
+  const data = await response.json();
+  res.send({ location: `${data.city}, ${data.region_name}` });
 });
 
 // Default error handler
@@ -132,7 +132,6 @@ app.use(function (err, req, res, next) {
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
-  // TODO: index.html is not being served :)
   res.sendFile('index.html', { root: 'public' });
 });
 

@@ -52,6 +52,11 @@ async function addLogin(name) {
 async function getNumLogins(name) {
     const result = await loginsCollection.findOne({name: {name: name}})
     // Gets rid of all other info and gives only the number
+
+    // First time loggin in
+    if(!result)
+        return 1
+
     return result.numLogins
 }
 
