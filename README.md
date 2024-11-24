@@ -58,6 +58,8 @@ Changes:
 
 ## Service deliverable
 
+Todos: No error message is displayed if you try to create a username with the same name as another. Nor when you get the wrong password.
+
 ## Database deliverable
 
 ## WebSocket deliverable

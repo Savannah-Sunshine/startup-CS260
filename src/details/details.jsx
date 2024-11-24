@@ -5,7 +5,7 @@ import browserImg from './browser.svg';
 
 // Gets name from props
 export function Details(props) {
-    const [timesLoggedIn, setTimesLoggedIn] = React.useState(0);
+    const [timesLoggedIn, setTimesLoggedIn] = React.useState('');
     const [location, setLocation] = React.useState('');
 
 
@@ -14,12 +14,13 @@ export function Details(props) {
         const fetchLocation = async () => {
             const response = await fetch('/api/getLocation');
             if (!response.ok) {
-                // console.log('Error fetching location');
+                console.log('Error fetching location');
                 setLocation('Unknown');
                 return;
             }
             const data = await response.json();
             if (!data.location) {
+                // Deals with errors
                 setLocation('Unknown');
                 return;
             }
@@ -44,14 +45,19 @@ export function Details(props) {
                 return response.text(); // Get the response as text
             })
             .then((text) => {
-                const data = JSON.parse(text)
-                // console.log("Times Logged In:", data);
-                setTimesLoggedIn(data.logins);
+                const data = JSON.parse(text).logins
+                console.log("Times Logged In:", data);
+
+                if (data < 0)
+                    setTimesLoggedIn('Unknown')
+                else
+                    setTimesLoggedIn(data);
+
             })
             .catch((error) => {
                 // console.log("Error fetching times logged in. Using default value.");
                 // console.log(error);
-                setTimesLoggedIn(5);
+                setTimesLoggedIn('Unknown');
             });
     }, []);
 
@@ -73,7 +79,6 @@ export function Details(props) {
                     <img src={browserImg} width="50px"></img>
                     <div>
                         Number of times logged into site: {timesLoggedIn}
-                        {/* {timesLoggedIn.find((name) => { return name === props.nam; })}  */}
                     </div>
                     <div> Source: Our Database </div>
                 </li>
