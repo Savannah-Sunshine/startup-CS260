@@ -24,6 +24,7 @@ secrets.md
 .env.production.local
 .env
 server/.env
+dbConfig.json
 
 npm-debug.log*
 yarn-debug.log*
