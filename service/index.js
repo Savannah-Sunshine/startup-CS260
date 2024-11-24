@@ -22,8 +22,14 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 // JSON body parsing using built-in middleware
 app.use(express.json());
 
+// Use the cookie parser middleware for tracking authentication tokens
+app.use(cookieParser());
+
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
+
+// Trust headers that are forwarded from the proxy so we can determine IP addresses
+app.set('trust proxy', true);
 
 // Router for service endpoints
 var apiRouter = express.Router();
@@ -92,7 +98,7 @@ apiRouter.post('/getUserLogins', (req, res) => {
   console.log('Hit getUserLogins endpoint');
   console.log(numLogins, req.body.name);
 
-
+  // TODO: vvvvvv
   // const scores = await DB.getUserLogins();
   // res.send(scores);
 
@@ -105,6 +111,7 @@ apiRouter.post('/getUserLogins', (req, res) => {
 });
 
 // GetAuth the location of the user
+// This API call is in backend because it requires the API key to be kept secret - frontend doesn't allow .env
 secureApiRouter.get('/getLocation', async (req, res) => {
   console.log('Hit get location endpoint');
   const response = await fetch(API_URL);

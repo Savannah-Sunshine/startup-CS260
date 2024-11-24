@@ -7,7 +7,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('simon');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const loginsCollection = db.collection('logins');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -18,8 +18,9 @@ const scoreCollection = db.collection('score');
   process.exit(1);
 });
 
-function getUser(email) {
-  return userCollection.findOne({ email: email });
+function getUser(name) {
+    // NAME WAS A TERRIBLE IDENTIFIER... TOO LATE :( 
+  return userCollection.findOne({ name: name });
 }
 
 function getUserByToken(token) {
@@ -40,24 +41,26 @@ async function createUser(email, password) {
   return user;
 }
 
-async function addScore(score) {
-  return scoreCollection.insertOne(score);
+async function addLogin(score) {
+    // Todo: Find person who login
+    // Todo: Add 1 to their logins
+  return loginsCollection.insertOne(score);
 }
 
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
-}
+// function getHighScores() {
+//   const query = { score: { $gt: 0, $lt: 900 } };
+//   const options = {
+//     sort: { score: -1 },
+//     limit: 10,
+//   };
+//   const cursor = scoreCollection.find(query, options);
+//   return cursor.toArray();
+// }
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addScore,
-  getHighScores,
+  addLogin,
+//   getHighScores,
 };
