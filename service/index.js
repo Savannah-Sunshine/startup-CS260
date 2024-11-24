@@ -55,11 +55,13 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
+  console.log('Hit login endpoint');
   const user = await DB.getUser(req.body.name);
   if (user) {
     // bcrypt will hash the password and compare it to the stored hash
     if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
+      DB.addLogin({name: req.body.name});
       res.send({ id: user._id });
       return;
     }
@@ -74,8 +76,8 @@ apiRouter.delete('/auth/logout', (_req, res) => {
 });
 
 
-// ! ^^^^^^ These are unauthenticated routes ^^^^^^
-// * vvvvvv These are authenticated routes vvvvvv
+// ! ^^^^^^ These are unauthenticated routes ^^^^^^ !
+// * vvvvvv These are authenticated routes vvvvvv *
 
 // secureApiRouter verifies credentials for endpoints
 const secureApiRouter = express.Router();
@@ -94,33 +96,32 @@ secureApiRouter.use(async (req, res, next) => {
 
 
 // GetUserLogins
-apiRouter.post('/getUserLogins', (req, res) => {
-  console.log('Hit getUserLogins endpoint');
-  console.log(numLogins, req.body.name);
+secureApiRouter.post('/getUserLogins', async (req, res) => {
+  console.log('Hit getUserLogins endpoint: ' + req.body.name);
 
-  // TODO: vvvvvv
-  // const scores = await DB.getUserLogins();
-  // res.send(scores);
+  const numLogins = await DB.getNumLogins(req.body.name);
+  console.log('numLogins: ' + numLogins)
 
-
-  // if (Object.keys(numLogins).length === 0) {
-  //   res.send({logins: 0});
-  //   return
-  // }
-  res.send({logins: 5});
+  // In the case that it's broken :).... send negative!
+  if (!numLogins)
+    res.send({logins: -1})
+  else
+    res.send({logins: numLogins});
 });
 
 // GetAuth the location of the user
 // This API call is in backend because it requires the API key to be kept secret - frontend doesn't allow .env
 secureApiRouter.get('/getLocation', async (req, res) => {
   console.log('Hit get location endpoint');
-  const response = await fetch(API_URL);
-  if (!response.ok) {
-    res.status(500).send({ msg: 'Error fetching location' });
-    return;
-  }
-  const data = await response.json();
-  res.send({ location: `${data.city}, ${data.region_name}` });
+  // const response = await fetch(API_URL);
+  // if (!response.ok) {
+  //   // Lets front page deal with error handling
+  //   res.status(500).send({ msg: 'Error fetching location' });
+  //   return;
+  // }
+  // const data = await response.json();
+  // res.send({ location: `${data.city}, ${data.region_name}` });
+  res.send({ location: `Canada, TODO` });
 });
 
 // Default error handler

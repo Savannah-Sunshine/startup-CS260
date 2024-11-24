@@ -27,12 +27,12 @@ function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
 
-async function createUser(email, password) {
+async function createUser(name, password) {
   // Hash the password before we insert it into the database
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    name: name,
     password: passwordHash,
     token: uuid.v4(),
   };
@@ -41,26 +41,24 @@ async function createUser(email, password) {
   return user;
 }
 
-async function addLogin(score) {
-    // Todo: Find person who login
-    // Todo: Add 1 to their logins
-  return loginsCollection.insertOne(score);
+async function addLogin(name) {
+
+  // Update the number of logins for the user by one
+  // $inc will increment by 1 
+  // upsert add row to DB if none exist, else will create w/ name and numlogins = 1
+  return await loginsCollection.updateOne({name: name}, { $set: {name: name}, $inc: {numLogins : 1} }, { upsert: true });
 }
 
-// function getHighScores() {
-//   const query = { score: { $gt: 0, $lt: 900 } };
-//   const options = {
-//     sort: { score: -1 },
-//     limit: 10,
-//   };
-//   const cursor = scoreCollection.find(query, options);
-//   return cursor.toArray();
-// }
+async function getNumLogins(name) {
+    const result = await loginsCollection.findOne({name: {name: name}})
+    // Gets rid of all other info and gives only the number
+    return result.numLogins
+}
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
   addLogin,
-//   getHighScores,
+  getNumLogins
 };
