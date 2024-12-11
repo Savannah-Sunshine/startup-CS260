@@ -121,7 +121,15 @@ secureApiRouter.get('/getLocation', async (req, res) => {
     return;
   }
   const data = await response.json();
-  res.send({ location: `${data.city}, ${data.region_name}` });
+  if (!data.city || !data.region_name) {
+    // Lets front page deal with error handling
+    console.log(data);
+    // Could be error with AWS?
+    res.status(500).send({ msg: `Error with this data`, error: data });
+    return;
+  }
+
+  res.send({ location: `${data.city}, ${data.region_name}`, data: data });
 });
 
 // Default error handler
