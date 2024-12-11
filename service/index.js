@@ -2,6 +2,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
+const {peerProxy} = require('./peerProxy.js');
 const app = express();
 require('dotenv').config()
 const DB = require('./database.js');
@@ -158,6 +159,8 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
