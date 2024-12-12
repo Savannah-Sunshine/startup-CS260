@@ -72,7 +72,6 @@ export function Details(props) {
 
     return (
         <main>
-            <Users userName={props.name} />
             <div className="detailsDiv">
                 <h1>Welcome {props.name}</h1>
                 <h1>This is what we have gathered about you.</h1>
@@ -91,22 +90,8 @@ export function Details(props) {
                     </div>
                     <div> Source: Our Database </div>
                 </li>
-
-
-
-                {/* Todo: Can add these back if I need more coding fun */}
-                {/* <li>
-                    <img src="public/cookie.svg" width="50px"></img>
-                    <div>Last Used Website: youtube.com</div>
-                    <div>Source: Cookies</div>
-                </li> */}
-                {/* <li>
-                    <img src="public/search.svg" alt="" width="50px" />
-                    <div>According to your cookies, you like Cats and go to BYU</div>
-                    <div>Source: Cookies</div>
-                </li> */}
-            </ul>
-
+            </ul>   
+            <Users userName={props.name} />
         </main>
     );
 }

@@ -26,7 +26,7 @@ export function Users(props) {
       let message = 'unknown';
       
       if (event.type === UserEvent.System) {
-        message = event.value.msg;
+        message = ' ' + event.value.msg;
       }
 
       messageArray.push(
@@ -39,11 +39,13 @@ export function Users(props) {
     return messageArray;
   }
 
+
+  
   return (
-    <div className='players'>
-      Player
-      <span className='player-name'>{userName}</span>
-      <div id='player-messages'>{createMessageArray()}</div>
+    <div className='online'>
+      Users Online:
+      <span className='user-name'>{userName}</span>
+      <div id='user-messages'>{createMessageArray()}</div>
     </div>
   );
 }
