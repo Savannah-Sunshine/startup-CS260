@@ -14,8 +14,7 @@ export function Details(props) {
     // This will be used to get data from the API
     React.useEffect(() => {
         const fetchLocation = async () => {
-            // const response = await fetch('/api/getLocation');
-            const response = 200;
+            const response = await fetch('/api/getLocation');
             if (!response.ok) {
                 console.log('Error fetching location');
                 setLocation('Unknown');
