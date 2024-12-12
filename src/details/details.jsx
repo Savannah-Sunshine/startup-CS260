@@ -2,6 +2,8 @@ import React from 'react';
 import './details.css';
 import globeImg from './globe.svg';
 import browserImg from './browser.svg';
+import { UserEvent, UserNotifier } from './UserEventMessage';
+import { Users } from './Users';
 
 // Gets name from props
 export function Details(props) {
@@ -12,7 +14,8 @@ export function Details(props) {
     // This will be used to get data from the API
     React.useEffect(() => {
         const fetchLocation = async () => {
-            const response = await fetch('/api/getLocation');
+            // const response = await fetch('/api/getLocation');
+            const response = 200;
             if (!response.ok) {
                 console.log('Error fetching location');
                 setLocation('Unknown');
@@ -29,6 +32,11 @@ export function Details(props) {
         };
         fetchLocation();
     }, []);
+
+    // Let other players know that a user has logged in
+    React.useEffect(() => {
+        UserNotifier.broadcastEvent(props.name, UserEvent.System, { msg: 'logged in' });
+    }, [props.name]);
 
     // This will be used to get data from the DB
     React.useEffect(() => {
@@ -64,6 +72,7 @@ export function Details(props) {
 
     return (
         <main>
+            <Users userName={props.name} />
             <div className="detailsDiv">
                 <h1>Welcome {props.name}</h1>
                 <h1>This is what we have gathered about you.</h1>
