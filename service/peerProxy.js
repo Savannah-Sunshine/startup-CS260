@@ -1,6 +1,8 @@
 const { WebSocketServer } = require('ws');
 const uuid = require('uuid');
 
+// This uses websockets! It's better than HTTP, it keeps the connection alive
+
 function peerProxy(httpServer) {
   // Create a websocket object
   const wss = new WebSocketServer({ noServer: true });
