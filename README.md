@@ -57,15 +57,27 @@ Changes:
 - Slight CSS changes
 
 ## Service deliverable
+Created
+- Created service folder and extrapolated HTML calls to it.
+- API works
+- Sudodatabase in local storage
 
-Todos: No error message is displayed if you try to create a username with the same name as another. Nor when you get the wrong password.
+Changes
+- I chose to remove error message display if you try to create a username with the same name as another. Nor when you get the wrong password.
+- AWS blocks the IP tracker API. On deployment onto AWS, it will be blocked. Locally it works.
 
-
-AWS blocks the IP tracker - only hits an issue on deployment. Hahahaha
-
-## Database deliverable
+## Login deliverable
+Changes/Creation
+- Added Database
+- Slightly changed login to facilitate login
+- Using Name instead of username due to website's design of greeting user.
 
 ## WebSocket deliverable
+Created
+- Added in new feature, shows you who is currently logged into the site, and what is happening on the site. This is to enable me to create a websocket feature. It is all in the pursuit of knowing how much info websites have on you online.
+- Added Leaderboard to show currently online
+- Added website events to show what is happening to other users
+- Using more secure websockets instead of HTML
 
 # My Notes
 [Notes file](public/notes.md)
